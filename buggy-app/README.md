@@ -6,17 +6,14 @@ You can easily build this image locally after checking out, running:
 
     $ docker image build -t <image-name>:<release> .
 
-And Push it to the local OCP image resitry
+And Push it to the local OCP image registry
 
     $ oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}'
 
     $ docker login -u $(oc whoami) -p $(oc whoami -t) default-route-openshift-image-registry.apps-crc.testing
 
-    $ podman tag localhost/<image-name>:<release> default-route-openshift-image-registry.apps-crc.testing/shared-images/<image-name>:<release>:latest
+    $ podman tag localhost/<image-name>:<release> default-route-openshift-image-registry.apps-crc.testing/shared-images/<image-name>:latest
 
-    podman push --tls-verify=false default-route-openshift-image-registry.apps-crc.testing/shared-images/<image-name>:<release:latest
+    podman push --tls-verify=false default-route-openshift-image-registry.apps-crc.testing/shared-images/<image-name>:latest
 
-Or try it on OpenShift cluster (or minishift, as you prefer) as a new docker-image based application
-
-    $ oc new-app --name testnginx --docker-image=mcappadonna/openshift-nginx:alpine
 
