@@ -1,4 +1,4 @@
-# openshift-nginx
+# buggy-app
 
 This repository contains the Dockerfile and the nginx configurations used to generate a container image based on the official [nginx:alpine image](https://hub.docker.com/_/nginx/), slighty modified to run as a Red Hat OpenShift application.
 
